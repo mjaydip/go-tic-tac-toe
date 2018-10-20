@@ -17,6 +17,7 @@ func index(w http.ResponseWriter, req *http.Request) {
 
 func registerRoutes() {
 	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
+	http.Handle("/dist/", http.StripPrefix("/dist/", http.FileServer(http.Dir("dist"))))
 	http.HandleFunc("/", index)
 }
 
