@@ -1,0 +1,22 @@
+{{ define "board" }}
+<h1 class="mt-5">Let's play tic-tac-toe!</h1>
+<br />
+<div class="players">
+    <div class="player in-play">X</div>
+    <div class="player">O</div>
+</div>
+<br />
+<div class="board">
+    {{ range $i, $v := .Board }}
+        {{if (eq ( mod $i 3) 0) }}
+            <div class="board-cell clear-both">
+                {{$v}}
+            </div>
+        {{ else }}
+            <div class="board-cell">
+                {{$v}}
+            </div>
+        {{ end }}
+    {{ end }}
+</div>
+{{ end }}

@@ -3,16 +3,29 @@ package server
 import (
 	"html/template"
 	"net/http"
+
+	"github.com/mjaydip/go-examples/go-tic-tac-toe/web/game"
 )
 
+var funcMap template.FuncMap
 var tpl *template.Template
+var g game.Game
 
 func parseAllTemplates() {
-	tpl = template.Must(template.ParseGlob("templates/*.html"))
+	funcMap = template.FuncMap{
+		"inc": func(i int) int {
+			return i + 1
+		},
+		"mod": func(i int, m int) int {
+			return i % m
+		},
+	}
+
+	tpl = template.Must(template.New("main").Funcs(funcMap).ParseGlob("templates/*.html"))
 }
 
 func index(w http.ResponseWriter, req *http.Request) {
-	tpl.ExecuteTemplate(w, "index.html", nil)
+	tpl.ExecuteTemplate(w, "index.html", g)
 }
 
 func registerRoutes() {
@@ -23,6 +36,7 @@ func registerRoutes() {
 
 // StartServer register all routes and start listening to the server
 func StartServer() {
+	g.InitGame()
 	parseAllTemplates()
 	registerRoutes()
 	http.ListenAndServe(":8100", nil)
