@@ -3,7 +3,7 @@ package player
 import (
 	"fmt"
 
-	"github.com/mjaydip/go-examples/tic-tac-toe/utils"
+	"github.com/mjaydip/go-examples/go-tic-tac-toe/console/utils"
 )
 
 // Player is type to hold player information

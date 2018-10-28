@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/mjaydip/go-examples/tic-tac-toe/board"
-	"github.com/mjaydip/go-examples/tic-tac-toe/game/history"
-	"github.com/mjaydip/go-examples/tic-tac-toe/player"
-	"github.com/mjaydip/go-examples/tic-tac-toe/utils"
+	"github.com/mjaydip/go-examples/go-tic-tac-toe/console/board"
+	"github.com/mjaydip/go-examples/go-tic-tac-toe/console/game/history"
+	"github.com/mjaydip/go-examples/go-tic-tac-toe/console/player"
+	"github.com/mjaydip/go-examples/go-tic-tac-toe/console/utils"
 )
 
 // Game is a type to manage game
