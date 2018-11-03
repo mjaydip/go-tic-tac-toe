@@ -25,6 +25,7 @@ func parseAllTemplates() {
 }
 
 func index(w http.ResponseWriter, req *http.Request) {
+	g.InitGame()
 	tpl.ExecuteTemplate(w, "index.html", g)
 }
 
@@ -32,13 +33,12 @@ func registerRoutes() {
 	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
 	http.Handle("/dist/", http.StripPrefix("/dist/", http.FileServer(http.Dir("dist"))))
 
-	http.HandleFunc("/move", game.HandleMove)
+	http.HandleFunc("/move", HandleMove)
 	http.HandleFunc("/", index)
 }
 
 // StartServer register all routes and start listening to the server
 func StartServer() {
-	g.InitGame()
 	parseAllTemplates()
 	registerRoutes()
 	http.ListenAndServe(":8100", nil)

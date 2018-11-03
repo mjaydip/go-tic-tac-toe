@@ -2,21 +2,22 @@
 <h1 class="mt-5">Let's play tic-tac-toe!</h1>
 <br />
 <div class="players">
-    <div class="player in-play">X</div>
-    <div class="player">O</div>
+    <div class="player player-1 in-play">X</div>
+    <div class="player player-2">O</div>
 </div>
 <br />
 <div class="board">
     {{ range $i, $v := .Board }}
         {{if (eq ( mod $i 3) 0) }}
             <div class="board-cell clear-both">
-                {{$v}}
+                <span>{{$v}}</span>
             </div>
         {{ else }}
             <div class="board-cell">
-                {{$v}}
+                <span>{{$v}}</span>
             </div>
         {{ end }}
     {{ end }}
 </div>
+<div id="winnerMsg" class="hidden"></div>
 {{ end }}
